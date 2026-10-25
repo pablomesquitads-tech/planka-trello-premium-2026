@@ -49,7 +49,7 @@ const Header = React.memo(() => {
       };
     }
 
-    const isAdminInSharedProject = user.role === UserRoles.ADMIN && !project.ownerProjectManagerId;
+    const isAdminInSharedProject = user?.role === UserRoles.ADMIN && !project.ownerProjectManagerId;
     const isManager = selectors.selectIsCurrentUserManagerForCurrentProject(state);
 
     if (isAdminInSharedProject || isManager) {
@@ -192,4 +192,5 @@ const Header = React.memo(() => {
 });
 
 export default Header;
+
 

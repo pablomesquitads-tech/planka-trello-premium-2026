@@ -53,7 +53,7 @@ const PromoBanner = React.memo(() => {
   const userId = useSelector(selectors.selectCurrentUserId);
 
   const isAdmin = useSelector(
-    (state) => selectors.selectCurrentUser(state).role === UserRoles.ADMIN,
+    (state) => selectors.selectCurrentUser(state)?.role === UserRoles.ADMIN,
   );
 
   const [dismissed, setDismissed] = useState(() => isBannerDismissed(userId));
@@ -147,3 +147,4 @@ const PromoBanner = React.memo(() => {
 });
 
 export default PromoBanner;
+

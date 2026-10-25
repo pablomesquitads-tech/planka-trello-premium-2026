@@ -3,7 +3,7 @@
  * Licensed under the Fair Use License
  */
 
-const STORAGE_KEY = 'trelle_mock_db_v2';
+const STORAGE_KEY = 'trelle_mock_db_v3';
 const ALLOWED_EMAIL = 'pablomesquitads@gmail.com';
 
 const createDefaultDatabase = () => {
@@ -37,7 +37,8 @@ const createDefaultDatabase = () => {
       language: 'pt-BR',
       subscribeToOwnCards: true,
       enableFavoritesByDefault: true,
-      defaultHomeView: 'board',
+      defaultHomeView: 'gridProjects',
+      defaultProjectsOrder: 'alphabetically',
       createdAt: now.toISOString(),
       updatedAt: now.toISOString(),
     },
@@ -49,6 +50,8 @@ const createDefaultDatabase = () => {
         backgroundImage: null,
         backgroundColor: 'board-gradient-1',
         isFavorite: true,
+        isHidden: false,
+        ownerProjectManagerId: '1',
         createdAt: now.toISOString(),
       },
     ],
@@ -597,3 +600,4 @@ Implementar e validar funcionalidades de paridade Trello Premium 2026.
   // Fallback default
   return { item: { id: `item_${Date.now()}`, ...data } };
 };
+

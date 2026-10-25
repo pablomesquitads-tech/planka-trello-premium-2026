@@ -16,17 +16,9 @@ import styles from './Home.module.scss';
 const Home = React.memo(() => {
   const view = useSelector(selectors.selectHomeView);
 
-  let View;
-  switch (view) {
-    case HomeViews.GRID_PROJECTS:
-      View = GridProjectsView;
-
-      break;
-    case HomeViews.GROUPED_PROJECTS:
-      View = GroupedProjectsView;
-
-      break;
-    default:
+  let View = GridProjectsView;
+  if (view === HomeViews.GROUPED_PROJECTS) {
+    View = GroupedProjectsView;
   }
 
   return (

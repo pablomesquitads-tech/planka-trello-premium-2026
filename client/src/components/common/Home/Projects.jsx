@@ -36,7 +36,7 @@ const Projects = React.memo(({ ids, title, titleIcon, withTypeIndicator, onAdd }
         </div>
       )}
       <Grid>
-        {ids.map((id) => (
+        {(ids || []).map((id) => (
           <Grid.Column key={id} className={styles.column}>
             <ProjectCard
               withDescription
@@ -85,3 +85,4 @@ Projects.defaultProps = {
 };
 
 export default Projects;
+
