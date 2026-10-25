@@ -3,7 +3,7 @@
  * Licensed under the Fair Use License
  */
 
-const STORAGE_KEY = 'trelle_mock_db_v3';
+const STORAGE_KEY = 'trelle_mock_db_v4';
 const ALLOWED_EMAIL = 'pablomesquitads@gmail.com';
 
 const createDefaultDatabase = () => {
@@ -48,6 +48,7 @@ const createDefaultDatabase = () => {
         name: 'Workspace Trelle 2026',
         backgroundType: 'gradient',
         backgroundImage: null,
+        backgroundGradient: 'board-gradient-1',
         backgroundColor: 'board-gradient-1',
         isFavorite: true,
         isHidden: false,
@@ -68,6 +69,7 @@ const createDefaultDatabase = () => {
         projectId: '1',
         name: 'Quadro Trelle Premium 2026',
         type: 'board',
+        context: 'board',
         view: 'kanban',
         createdAt: now.toISOString(),
       },
@@ -600,4 +602,5 @@ Implementar e validar funcionalidades de paridade Trello Premium 2026.
   // Fallback default
   return { item: { id: `item_${Date.now()}`, ...data } };
 };
+
 

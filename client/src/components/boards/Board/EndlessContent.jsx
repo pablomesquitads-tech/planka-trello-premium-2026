@@ -43,17 +43,13 @@ const EndlessContent = React.memo(() => {
     onCardPaste: handleCardPaste,
   };
 
-  let View;
+  let View = GridView;
   switch (board.view) {
-    case BoardViews.GRID:
-      View = GridView;
-
-      break;
     case BoardViews.LIST:
       View = ListView;
-
       break;
     default:
+      View = GridView;
   }
 
   return <View {...viewProps} />; // eslint-disable-line react/jsx-props-no-spreading

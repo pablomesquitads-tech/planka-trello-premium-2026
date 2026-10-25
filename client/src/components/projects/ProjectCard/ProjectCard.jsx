@@ -52,12 +52,12 @@ const ProjectCard = React.memo(
 
     const ownerProjectManager = useSelector(
       (state) =>
-        project.ownerProjectManagerId &&
+        project?.ownerProjectManagerId &&
         selectProjectManagerById(state, project.ownerProjectManagerId),
     );
 
     const backgroundImageUrl = useSelector((state) => {
-      if (!project.backgroundType || project.backgroundType !== ProjectBackgroundTypes.IMAGE) {
+      if (!project?.backgroundType || project.backgroundType !== ProjectBackgroundTypes.IMAGE) {
         return null;
       }
 
@@ -79,6 +79,8 @@ const ProjectCard = React.memo(
         }),
       );
     }, [project, dispatch]);
+
+    if (!project) return null;
 
     const withSidebar = withTypeIndicator || (withFavoriteButton && !project.isHidden);
 
@@ -186,3 +188,4 @@ ProjectCard.defaultProps = {
 };
 
 export default ProjectCard;
+

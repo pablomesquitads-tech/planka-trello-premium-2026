@@ -11,6 +11,10 @@ import entryActions from '../../../entry-actions';
 import { BoardViews } from '../../../constants/Enums';
 import GridView from './GridView';
 import ListView from './ListView';
+import CalendarView from './CalendarView';
+import TimelineView from './TimelineView';
+import TableView from './TableView';
+import DashboardView from './DashboardView';
 
 const FiniteContent = React.memo(() => {
   const board = useSelector(selectors.selectCurrentBoard);
@@ -30,17 +34,28 @@ const FiniteContent = React.memo(() => {
     dispatch(entryActions.pasteCardInCurrentContext());
   }, [dispatch]);
 
-  let View;
+  let View = GridView;
   switch (board.view) {
     case BoardViews.GRID:
       View = GridView;
-
       break;
     case BoardViews.LIST:
       View = ListView;
-
+      break;
+    case BoardViews.CALENDAR:
+      View = CalendarView;
+      break;
+    case BoardViews.TIMELINE:
+      View = TimelineView;
+      break;
+    case BoardViews.TABLE:
+      View = TableView;
+      break;
+    case BoardViews.DASHBOARD:
+      View = DashboardView;
       break;
     default:
+      View = GridView;
   }
 
   return (

@@ -12,6 +12,10 @@ import { BoardContexts, BoardViews } from '../../../constants/Enums';
 import KanbanContent from './KanbanContent';
 import FiniteContent from './FiniteContent';
 import EndlessContent from './EndlessContent';
+import CalendarView from './CalendarView';
+import TimelineView from './TimelineView';
+import TableView from './TableView';
+import DashboardView from './DashboardView';
 import ShortcutsProvider from './ShortcutsProvider';
 import CardModal from '../../cards/CardModal';
 import BoardActivitiesModal from '../../activities/BoardActivitiesModal';
@@ -21,21 +25,25 @@ const Board = React.memo(() => {
   const modal = useSelector(selectors.selectCurrentModal);
   const isCardModalOpened = useSelector((state) => !!selectors.selectPath(state).cardId);
 
-  let Content;
-  if (board.view === BoardViews.KANBAN) {
+  let Content = KanbanContent;
+  if (!board || board.view === BoardViews.KANBAN) {
     Content = KanbanContent;
+  } else if (board.view === BoardViews.CALENDAR) {
+    Content = CalendarView;
+  } else if (board.view === BoardViews.TIMELINE) {
+    Content = TimelineView;
+  } else if (board.view === BoardViews.TABLE) {
+    Content = TableView;
+  } else if (board.view === BoardViews.DASHBOARD) {
+    Content = DashboardView;
   } else {
     switch (board.context) {
-      case BoardContexts.BOARD:
-        Content = FiniteContent;
-
-        break;
       case BoardContexts.ARCHIVE:
       case BoardContexts.TRASH:
         Content = EndlessContent;
-
         break;
       default:
+        Content = FiniteContent;
     }
   }
 
@@ -46,7 +54,6 @@ const Board = React.memo(() => {
     switch (modal.type) {
       case ModalTypes.BOARD_ACTIVITIES:
         modalNode = <BoardActivitiesModal />;
-
         break;
       default:
     }

@@ -19,13 +19,14 @@ import AutomationsModal from '../AutomationsModal/AutomationsModal';
 
 import styles from './RightSide.module.scss';
 
-// One complete sentence per view rather than a view name interpolated into a
-// frame. A name that has to fit a slot has to be inflected to fit it, and the
-// frame is not the same shape in every language.
 const TOOLTIP_BY_VIEW = {
   [BoardViews.KANBAN]: 'action.switchToKanbanView',
   [BoardViews.GRID]: 'action.switchToGridView',
   [BoardViews.LIST]: 'action.switchToListView',
+  [BoardViews.CALENDAR]: 'Calendário',
+  [BoardViews.TIMELINE]: 'Linha do Tempo (Gantt)',
+  [BoardViews.TABLE]: 'Tabela',
+  [BoardViews.DASHBOARD]: 'Dashboard Analítico',
 };
 
 const RightSide = React.memo(() => {
@@ -54,7 +55,11 @@ const RightSide = React.memo(() => {
       <div className={styles.action}>
         <div className={styles.buttonGroup}>
           {views.map((view) => (
-            <Tooltip key={view} content={t(TOOLTIP_BY_VIEW[view])} disabled={view === board.view}>
+            <Tooltip
+              key={view}
+              content={TOOLTIP_BY_VIEW[view] ? t(TOOLTIP_BY_VIEW[view]) : view}
+              disabled={view === board.view}
+            >
               <button
                 type="button"
                 value={view}
@@ -62,7 +67,7 @@ const RightSide = React.memo(() => {
                 className={styles.button}
                 onClick={handleSelectViewClick}
               >
-                <Icon fitted name={BoardViewIcons[view]} />
+                <Icon fitted name={BoardViewIcons[view] || 'columns'} />
               </button>
             </Tooltip>
           ))}
