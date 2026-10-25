@@ -180,11 +180,6 @@ module.exports = {
     // means anything, which is why both are here.
     const identifier = inputs.emailOrUsername.trim().toLowerCase();
 
-    if (identifier !== 'pablomesquitads@gmail.com' && identifier !== 'pablomesquitads') {
-      sails.log.warn('Unauthorized login attempt by: ' + identifier);
-      throw Errors.INVALID_EMAIL_OR_USERNAME;
-    }
-
     // eslint-disable-next-line no-restricted-syntax
     for (const [key, max] of [
       [`auth:ip:${remoteAddress}`, sails.config.custom.authRateLimitMaxPerIp],
@@ -212,6 +207,20 @@ module.exports = {
     if (!user) {
       sails.log.warn(
         `Invalid email or username: "${inputs.emailOrUsername}"! (IP: ${remoteAddress})`,
+      );
+
+      throw sails.config.custom.showDetailedAuthErrors
+        ? Errors.INVALID_EMAIL_OR_USERNAME
+        : Errors.INVALID_CREDENTIALS;
+    }
+
+    // Trelle is single-user: only the account behind DEFAULT_ADMIN_EMAIL may sign in.
+    // Answered like an unknown account, so the response does not reveal that it exists.
+    const { defaultAdminEmail } = sails.config.custom;
+
+    if (defaultAdminEmail && user.email !== defaultAdminEmail) {
+      sails.log.warn(
+        `Login blocked for non-allowed account: "${inputs.emailOrUsername}"! (IP: ${remoteAddress})`,
       );
 
       throw sails.config.custom.showDetailedAuthErrors

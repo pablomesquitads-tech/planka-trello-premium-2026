@@ -29,6 +29,14 @@ module.exports = {
   async fn(inputs) {
     const { values } = inputs;
 
+    // Trelle is single-user: no account other than DEFAULT_ADMIN_EMAIL may be created.
+    // Reported as the active users limit, which callers already handle.
+    const { defaultAdminEmail } = sails.config.custom;
+
+    if (defaultAdminEmail && values.email.toLowerCase() !== defaultAdminEmail) {
+      throw 'activeLimitReached';
+    }
+
     if (values.password) {
       values.password = await bcrypt.hash(values.password, 10);
     }

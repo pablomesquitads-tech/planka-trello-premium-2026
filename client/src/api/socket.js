@@ -7,7 +7,7 @@ import socketIOClient from 'socket.io-client';
 import sailsIOClient from 'sails.io.js';
 
 import Config from '../constants/Config';
-import http from './http';
+import http, { USE_MOCK } from './http';
 
 const io = sailsIOClient(socketIOClient);
 
@@ -23,20 +23,12 @@ socket.connect = socket._connect; // eslint-disable-line no-underscore-dangle
 
 ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'].forEach((method) => {
   socket[method.toLowerCase()] = (url, data, headers) => {
-    // If socket is not connected or in standalone/static mode, fallback directly to HTTP
-    if (!socket.isConnected || !socket.isConnected()) {
+    // Mock builds have no socket server, so requests go to the in-browser mock
+    if (USE_MOCK) {
       return http[method.toLowerCase()](url, data, headers);
     }
 
     return new Promise((resolve, reject) => {
-      let isSettled = false;
-      const timer = setTimeout(() => {
-        if (!isSettled) {
-          isSettled = true;
-          http[method.toLowerCase()](url, data, headers).then(resolve).catch(reject);
-        }
-      }, 2000);
-
       socket.request(
         {
           method,
@@ -45,12 +37,8 @@ socket.connect = socket._connect; // eslint-disable-line no-underscore-dangle
           url: `/api${url}`,
         },
         (body, { error }) => {
-          if (isSettled) return;
-          isSettled = true;
-          clearTimeout(timer);
-
           if (body instanceof Error || error) {
-            http[method.toLowerCase()](url, data, headers).then(resolve).catch(reject);
+            reject(body);
           } else {
             resolve(body);
           }
