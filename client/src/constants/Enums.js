@@ -60,6 +60,10 @@ export const BoardViews = {
   KANBAN: 'kanban',
   GRID: 'grid',
   LIST: 'list',
+  CALENDAR: 'calendar',
+  TIMELINE: 'timeline',
+  TABLE: 'table',
+  DASHBOARD: 'dashboard',
 };
 
 export const BoardContexts = {

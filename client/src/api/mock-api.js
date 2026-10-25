@@ -3,7 +3,7 @@
  * Licensed under the Fair Use License
  */
 
-const STORAGE_KEY = 'trelle_mock_db_v4';
+const STORAGE_KEY = 'trelle_mock_db_v5';
 const ALLOWED_EMAIL = 'pablomesquitads@gmail.com';
 
 const createDefaultDatabase = () => {
@@ -146,7 +146,7 @@ const createDefaultDatabase = () => {
         boardId: '1',
         listId: 'l3',
         creatorUserId: '1',
-        type: 'card',
+        type: 'project',
         position: 1000,
         name: '🚀 Motor de Automações Butler Híbrido',
         description: 'Motor de regras Event-Driven e Time-Driven com controle de recursão depth <= 3 e construtor AI-to-Rule em linguagem natural.',
@@ -162,7 +162,7 @@ const createDefaultDatabase = () => {
         boardId: '1',
         listId: 'l3',
         creatorUserId: '1',
-        type: 'card',
+        type: 'project',
         position: 2000,
         name: '🧠 Atlassian Intelligence Copilot Integrado',
         description: 'Recursos nativos de IA: Extrator de action items para checklists, Resumo executivo de discussões e Refinamento de descrição estruturada.',
@@ -178,7 +178,7 @@ const createDefaultDatabase = () => {
         boardId: '1',
         listId: 'l2',
         creatorUserId: '1',
-        type: 'card',
+        type: 'project',
         position: 1000,
         name: '📊 Multi-Views: Gantt, Timeline & Calendário',
         description: 'Visualização dinâmica alternável: Kanban, Calendário mensal/semanal, Linha do Tempo / Gantt com dependências, Tabela e Dashboard analítico.',
@@ -194,7 +194,7 @@ const createDefaultDatabase = () => {
         boardId: '1',
         listId: 'l5',
         creatorUserId: '1',
-        type: 'card',
+        type: 'project',
         position: 1000,
         name: '🛡️ Super-Listas com Limite WIP e Cores',
         description: 'Colunas expansíveis e recolhíveis horizontalmente com contador de cartões e alerta visual de saturação de limite WIP.',
@@ -522,7 +522,7 @@ Implementar e validar funcionalidades de paridade Trello Premium 2026.
       boardId: '1',
       listId,
       creatorUserId: '1',
-      type: 'card',
+      type: 'project',
       position: db.cards.length * 1000 + 1000,
       name: data?.name || 'Novo Cartão',
       description: data?.description || '',
