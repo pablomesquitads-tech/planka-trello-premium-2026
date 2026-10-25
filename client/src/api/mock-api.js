@@ -3,8 +3,21 @@
  * Licensed under the Fair Use License
  */
 
+import version from '../version';
+
 const STORAGE_KEY = 'trelle_mock_db_v5';
 const ALLOWED_EMAIL = 'pablomesquitads@gmail.com';
+
+// Mirrors the server-side defaults of the Board model
+const BOARD_DEFAULTS = {
+  defaultView: 'kanban',
+  defaultCardType: 'project',
+  limitCardTypesToDefaultOne: false,
+  alwaysDisplayCardCreator: false,
+  showCardCounter: false,
+  displayCardAges: false,
+  expandTaskListsByDefault: false,
+};
 
 const createDefaultDatabase = () => {
   const now = new Date();
@@ -19,7 +32,7 @@ const createDefaultDatabase = () => {
 
   return {
     bootstrap: {
-      version: '2.0.0',
+      version,
       instanceName: 'Trelle',
       isDemoMode: false,
       isRegistrationEnabled: false,
@@ -71,6 +84,7 @@ const createDefaultDatabase = () => {
         type: 'board',
         context: 'board',
         view: 'kanban',
+        ...BOARD_DEFAULTS,
         createdAt: now.toISOString(),
       },
     ],
@@ -300,7 +314,13 @@ const getDB = () => {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
-      return JSON.parse(raw);
+      const db = JSON.parse(raw);
+
+      // Data cached by older builds lacks board settings the client relies on,
+      // e.g. a missing defaultCardType leaves new cards without a type.
+      db.boards = db.boards.map((board) => ({ ...BOARD_DEFAULTS, ...board }));
+
+      return db;
     }
   } catch {
     /* empty */
@@ -338,7 +358,8 @@ export const handleMockRequest = async (method, url, data) => {
 
   // 1. Bootstrap
   if (cleanUrl === '/bootstrap') {
-    return { item: db.bootstrap };
+    // Always the running client's version, or the "new version available" banner never goes away
+    return { item: { ...db.bootstrap, version } };
   }
 
   // 2. Access Tokens (Login)
@@ -522,7 +543,7 @@ Implementar e validar funcionalidades de paridade Trello Premium 2026.
       boardId: '1',
       listId,
       creatorUserId: '1',
-      type: 'project',
+      type: data?.type || 'project',
       position: db.cards.length * 1000 + 1000,
       name: data?.name || 'Novo Cartão',
       description: data?.description || '',

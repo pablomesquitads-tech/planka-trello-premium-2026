@@ -19,7 +19,8 @@ io.sails.environment = import.meta.env.MODE;
 
 const { socket } = io;
 
-socket.connect = socket._connect; // eslint-disable-line no-underscore-dangle
+// Mock builds have no socket server to connect to
+socket.connect = USE_MOCK ? () => {} : socket._connect; // eslint-disable-line no-underscore-dangle
 
 ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'].forEach((method) => {
   socket[method.toLowerCase()] = (url, data, headers) => {
