@@ -792,6 +792,7 @@ const ProjectContent = React.memo(() => {
               (canRestore && (isInArchiveList || isInTrashList)) ||
               (canArchive && !isInArchiveList) ||
               canDelete) && (
+              <>
               <div className={styles.actions}>
                 <span className={styles.actionsTitle}>Atlassian Intelligence AI</span>
                 <Button
@@ -920,6 +921,7 @@ const ProjectContent = React.memo(() => {
                   </MoreActionsPopup>
                 )}
               </div>
+              </>
             )}
           </div>
         </Grid.Column>
