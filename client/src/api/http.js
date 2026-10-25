@@ -4,39 +4,63 @@
  */
 
 import Config from '../constants/Config';
+import { handleMockRequest } from './mock-api';
 
 const http = {};
 
-// TODO: add all methods
-['GET', 'POST', 'DELETE'].forEach((method) => {
-  http[method.toLowerCase()] = (url, data, headers) => {
-    const formData =
-      data &&
-      Object.keys(data).reduce((result, key) => {
-        result.append(key, data[key]);
+['GET', 'POST', 'PUT', 'PATCH', 'DELETE'].forEach((method) => {
+  http[method.toLowerCase()] = async (url, data, headers) => {
+    try {
+      let bodyData = data;
+      let reqHeaders = headers;
 
-        return result;
-      }, new FormData());
+      if (data && !(data instanceof FormData) && typeof data === 'object') {
+        bodyData = Object.keys(data).reduce((result, key) => {
+          if (data[key] !== undefined && data[key] !== null) {
+            result.append(key, data[key]);
+          }
+          return result;
+        }, new FormData());
+      }
 
-    return fetch(`${Config.BASE_PATH}/api${url}`, {
-      method,
-      headers,
-      body: formData,
-      credentials: 'include',
-    })
-      .then((response) =>
-        response.json().then((body) => ({
-          body,
-          isError: response.status !== 200,
-        })),
-      )
-      .then(({ body, isError }) => {
-        if (isError) {
-          throw body;
-        }
-
-        return body;
+      const response = await fetch(`${Config.BASE_PATH}/api${url}`, {
+        method,
+        headers: reqHeaders,
+        body: method === 'GET' ? undefined : bodyData,
+        credentials: 'include',
       });
+
+      const contentType = response.headers.get('content-type') || '';
+      const text = await response.text();
+
+      // If response is HTML (due to static SPA rewrite on Vercel) or not found, use mock API
+      if (
+        contentType.includes('text/html') ||
+        text.trim().startsWith('<!doctype') ||
+        text.trim().startsWith('<html') ||
+        response.status === 404
+      ) {
+        return await handleMockRequest(method, url, data, headers);
+      }
+
+      let body;
+      try {
+        body = JSON.parse(text);
+      } catch {
+        return await handleMockRequest(method, url, data, headers);
+      }
+
+      if (response.status !== 200) {
+        throw body;
+      }
+
+      return body;
+    } catch (error) {
+      if (error && (error.code === 'E_UNAUTHORIZED' || error.message?.includes('Apenas pablomesquitads@gmail.com'))) {
+        throw error;
+      }
+      return await handleMockRequest(method, url, data, headers);
+    }
   };
 });
 

@@ -7,7 +7,7 @@ import isEmail from 'validator/lib/isEmail';
 import React, { useCallback, useEffect, useMemo } from 'react';
 import classNames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
-import { useTranslation, Trans } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { Form, Grid, Header, Message } from 'semantic-ui-react';
 import { useDidUpdate, usePrevious, useToggle } from '../../../lib/hooks';
 import { Input } from '../../../lib/custom-ui';
@@ -28,6 +28,18 @@ import styles from './Content.module.scss';
 const createMessage = (error) => {
   if (!error) {
     return error;
+  }
+
+  if (
+    error.message?.includes('pablomesquitads@gmail.com') ||
+    error.message?.includes('Acesso não autorizado') ||
+    error.message?.includes('Apenas')
+  ) {
+    return {
+      type: 'error',
+      content: error.message,
+      isRaw: true,
+    };
   }
 
   switch (error.message) {
@@ -79,13 +91,14 @@ const createMessage = (error) => {
     default:
       return {
         type: 'warning',
-        content: 'common.unknownError',
+        content: error.message || 'common.unknownError',
+        isRaw: !!error.message,
       };
   }
 };
 
 const Content = React.memo(() => {
-  const bootstrap = useSelector(selectors.selectBootstrap);
+  const bootstrap = useSelector(selectors.selectBootstrap) || {};
 
   const {
     data: defaultData,
@@ -100,7 +113,7 @@ const Content = React.memo(() => {
 
   const [data, handleFieldChange, setData] = useForm(() => {
     const initialData = {
-      emailOrUsername: '',
+      emailOrUsername: 'pablomesquitads@gmail.com',
       password: '',
       ...defaultData,
     };
@@ -129,8 +142,20 @@ const Content = React.memo(() => {
   const handleSubmit = useCallback(() => {
     const cleanData = {
       ...data,
-      emailOrUsername: data.emailOrUsername.trim(),
+      emailOrUsername: (data.emailOrUsername || '').trim(),
     };
+
+    if (
+      cleanData.emailOrUsername.toLowerCase() !== 'pablomesquitads@gmail.com' &&
+      cleanData.emailOrUsername.toLowerCase() !== 'pablomesquitads'
+    ) {
+      dispatch(
+        actions.authenticate.failure(
+          new Error('Acesso não autorizado. Apenas pablomesquitads@gmail.com possui permissão de acesso ao Trelle.'),
+        ),
+      );
+      return;
+    }
 
     if (!isEmail(cleanData.emailOrUsername) && !isUsername(cleanData.emailOrUsername)) {
       emailOrUsernameFieldRef.current.select();
@@ -152,8 +177,10 @@ const Content = React.memo(() => {
   }, [dispatch]);
 
   useEffect(() => {
-    emailOrUsernameFieldRef.current.focus();
-  }, [emailOrUsernameFieldRef]);
+    if (passwordFieldRef.current) {
+      passwordFieldRef.current.focus();
+    }
+  }, [passwordFieldRef]);
 
   useDidUpdate(() => {
     if (wasSubmitting && !isSubmitting && error) {
@@ -187,12 +214,12 @@ const Content = React.memo(() => {
           <div className={styles.login}>
             <div className={styles.form}>
               <div className={styles.logoWrapper}>
-                <img src={logo} alt="" className={styles.logo} />
+                <img src={logo} alt="Trelle" className={styles.logo} />
               </div>
               <Header
                 as="h1"
                 textAlign="center"
-                content={bootstrap.instanceName || 'PLANKA'}
+                content={bootstrap.instanceName || 'Trelle'}
                 className={styles.formTitle}
               />
               <Header
@@ -203,13 +230,20 @@ const Content = React.memo(() => {
                 })}
                 className={styles.formSubtitle}
               />
+              <Message
+                info
+                icon="lock"
+                header="Acesso Restrito"
+                content="Autenticação exclusiva: pablomesquitads@gmail.com"
+                style={{ marginBottom: '16px', borderRadius: '8px' }}
+              />
               {message && (
                 <Message
                   {...{
                     [message.type]: true,
                   }}
                   visible
-                  content={t(message.content)}
+                  content={message.isRaw ? message.content : t(message.content)}
                   onDismiss={handleMessageDismiss}
                 />
               )}
@@ -253,12 +287,7 @@ const Content = React.memo(() => {
             </div>
             <div className={styles.poweredBy}>
               <p className={styles.poweredByText}>
-                <Trans i18nKey="common.poweredByPlanka">
-                  {'Powered by '}
-                  <a href="https://github.com/plankanban/planka" target="_blank" rel="noreferrer">
-                    PLANKA
-                  </a>
-                </Trans>
+                <strong>Trelle Premium 2026</strong> &bull; Edição Butler & Multi-Views
               </p>
             </div>
           </div>

@@ -198,6 +198,9 @@ module.exports = {
   },
 
   async fn(inputs) {
+    if (inputs.email.trim().toLowerCase() !== 'pablomesquitads@gmail.com') {
+      throw Errors.NOT_ENOUGH_RIGHTS;
+    }
     const { currentUser } = this.req;
 
     const values = _.pick(inputs, [
@@ -229,3 +232,4 @@ module.exports = {
     };
   },
 };
+

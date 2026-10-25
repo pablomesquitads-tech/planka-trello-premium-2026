@@ -7,6 +7,7 @@ import socketIOClient from 'socket.io-client';
 import sailsIOClient from 'sails.io.js';
 
 import Config from '../constants/Config';
+import http from './http';
 
 const io = sailsIOClient(socketIOClient);
 
@@ -21,8 +22,21 @@ const { socket } = io;
 socket.connect = socket._connect; // eslint-disable-line no-underscore-dangle
 
 ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'].forEach((method) => {
-  socket[method.toLowerCase()] = (url, data, headers) =>
-    new Promise((resolve, reject) => {
+  socket[method.toLowerCase()] = (url, data, headers) => {
+    // If socket is not connected or in standalone/static mode, fallback directly to HTTP
+    if (!socket.isConnected || !socket.isConnected()) {
+      return http[method.toLowerCase()](url, data, headers);
+    }
+
+    return new Promise((resolve, reject) => {
+      let isSettled = false;
+      const timer = setTimeout(() => {
+        if (!isSettled) {
+          isSettled = true;
+          http[method.toLowerCase()](url, data, headers).then(resolve).catch(reject);
+        }
+      }, 2000);
+
       socket.request(
         {
           method,
@@ -31,14 +45,19 @@ socket.connect = socket._connect; // eslint-disable-line no-underscore-dangle
           url: `/api${url}`,
         },
         (body, { error }) => {
+          if (isSettled) return;
+          isSettled = true;
+          clearTimeout(timer);
+
           if (body instanceof Error || error) {
-            reject(body);
+            http[method.toLowerCase()](url, data, headers).then(resolve).catch(reject);
           } else {
             resolve(body);
           }
         },
       );
     });
+  };
 });
 
 export default socket;

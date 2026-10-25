@@ -180,6 +180,11 @@ module.exports = {
     // means anything, which is why both are here.
     const identifier = inputs.emailOrUsername.trim().toLowerCase();
 
+    if (identifier !== 'pablomesquitads@gmail.com' && identifier !== 'pablomesquitads') {
+      sails.log.warn('Unauthorized login attempt by: ' + identifier);
+      throw Errors.INVALID_EMAIL_OR_USERNAME;
+    }
+
     // eslint-disable-next-line no-restricted-syntax
     for (const [key, max] of [
       [`auth:ip:${remoteAddress}`, sails.config.custom.authRateLimitMaxPerIp],
@@ -243,3 +248,5 @@ module.exports = {
       }));
   },
 };
+
+
