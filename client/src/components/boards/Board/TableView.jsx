@@ -6,8 +6,9 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Table, Icon, Input, Dropdown } from 'semantic-ui-react';
+import { push } from '../../../lib/redux-router';
 import selectors from '../../../selectors';
-import entryActions from '../../../entry-actions';
+import Paths from '../../../constants/Paths';
 import styles from './TableView.module.scss';
 
 const TableView = React.memo(() => {
@@ -30,7 +31,7 @@ const TableView = React.memo(() => {
 
   const handleCardClick = useCallback(
     (cardId) => {
-      dispatch(entryActions.openCard(cardId));
+      dispatch(push(Paths.CARDS.replace(':id', cardId)));
     },
     [dispatch],
   );

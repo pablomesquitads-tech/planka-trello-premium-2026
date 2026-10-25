@@ -6,8 +6,9 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Icon, Button } from 'semantic-ui-react';
+import { push } from '../../../lib/redux-router';
 import selectors from '../../../selectors';
-import entryActions from '../../../entry-actions';
+import Paths from '../../../constants/Paths';
 import styles from './CalendarView.module.scss';
 
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -45,7 +46,7 @@ const CalendarView = React.memo(() => {
 
   const handleCardClick = useCallback(
     (cardId) => {
-      dispatch(entryActions.openCard(cardId));
+      dispatch(push(Paths.CARDS.replace(':id', cardId)));
     },
     [dispatch],
   );

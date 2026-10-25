@@ -316,6 +316,47 @@ export const selectAvailableListsForCurrentBoard = createSelector(
   },
 );
 
+export const selectListsForCurrentBoard = selectAvailableListsForCurrentBoard;
+
+export const selectUsersForCurrentBoard = createSelector(
+  orm,
+  (state) => selectPath(state).boardId,
+  ({ Board }, id) => {
+    if (!id) {
+      return id;
+    }
+
+    const boardModel = Board.withId(id);
+
+    if (!boardModel) {
+      return boardModel;
+    }
+
+    return boardModel
+      .getMembershipsQuerySet()
+      .toModelArray()
+      .map((boardMembershipModel) => boardMembershipModel.user.ref);
+  },
+);
+
+export const selectCardsForCurrentBoard = createSelector(
+  orm,
+  (state) => selectPath(state).boardId,
+  ({ Board }, id) => {
+    if (!id) {
+      return id;
+    }
+
+    const boardModel = Board.withId(id);
+
+    if (!boardModel) {
+      return boardModel;
+    }
+
+    return boardModel.getCardsModelArray().map((cardModel) => cardModel.ref);
+  },
+);
+
 export const selectCardsExceptCurrentForCurrentBoard = createSelector(
   orm,
   (state) => selectPath(state).boardId,
@@ -523,6 +564,9 @@ export default {
   selectTrashListIdForCurrentBoard,
   selectKanbanListIdsForCurrentBoard,
   selectAvailableListsForCurrentBoard,
+  selectListsForCurrentBoard,
+  selectUsersForCurrentBoard,
+  selectCardsForCurrentBoard,
   selectCardsExceptCurrentForCurrentBoard,
   selectFilteredCardIdsForCurrentBoard,
   selectCustomFieldGroupIdsForCurrentBoard,
