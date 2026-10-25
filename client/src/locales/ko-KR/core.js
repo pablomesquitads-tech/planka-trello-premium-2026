@@ -21,7 +21,7 @@ export default {
   translation: {
     common: {
       aboutApp_title: '앱 소개',
-      aboutPlanka_title: 'PLANKA 소개',
+      aboutPlanka_title: 'Trelle 소개',
       accessToken: '액세스 토큰',
       account: '계정',
       actions: '작업',
@@ -149,8 +149,8 @@ export default {
       customFieldGroups_title: '사용자 정의 필드 그룹',
       customField_title: '사용자 정의 필드',
       customFields_title: '사용자 정의 필드',
-      discoverPlankaPro: '✨ 보드를 위한 더 많은 기능: PLANKA Pro 알아보기',
-      discoverPlankaPro_title: 'PLANKA Pro 알아보기',
+      discoverPlankaPro: '✨ 보드를 위한 더 많은 기능: Trelle Pro 알아보기',
+      discoverPlankaPro_title: 'Trelle Pro 알아보기',
       upgradeTeamToPro_title: '팀을 Pro로 업그레이드',
       proFeatureCalendar: '✨ 보드용 캘린더 뷰',
       proFeatureRecurringCards: '✨ 반복 카드 및 자동화',
@@ -308,7 +308,7 @@ export default {
       passwordIsSet: '비밀번호가 설정됨',
       phone: '전화',
       plankaUsesAppriseToSendNotificationsToOver100PopularServices:
-        'PLANKA는 <1><0>Apprise</0></1>를 사용하여 100개 이상의 인기 서비스에 알림을 보냅니다.',
+        'Trelle는 <1><0>Apprise</0></1>를 사용하여 100개 이상의 인기 서비스에 알림을 보냅니다.',
       port: '포트',
       preferences: '환경 설정',
       pressPasteShortcutToAddAttachmentFromClipboard:
@@ -316,11 +316,11 @@ export default {
       private: '비공개',
       proFeatureDashboard: '✨ 모든 프로젝트를 한 대시보드에서',
       proFeatureExport: '✨ 보고서용 카드 PDF 내보내기',
-      proFeatureMobile: '✨ 휴대폰과 태블릿에서도 PLANKA',
+      proFeatureMobile: '✨ 휴대폰과 태블릿에서도 Trelle',
       proFeatureSso: '✨ 회사 디렉터리 계정으로 로그인(SSO)',
       proFeatureThemes: '✨ 5가지 테마와 원하는 강조 색상',
       proFeatureTimeline: '✨ 타임라인: 1년 전체를 한 축에',
-      proTrialSelfHosted: '✨ 직접 운영하는 서버에서 PLANKA Pro 30일 체험',
+      proTrialSelfHosted: '✨ 직접 운영하는 서버에서 Trelle Pro 30일 체험',
       project: '프로젝트',
       projectNotFound_title: '프로젝트를 찾을 수 없음',
       projectOwner: '프로젝트 소유자',

@@ -21,7 +21,7 @@ export default {
   translation: {
     common: {
       aboutApp_title: 'Om appen',
-      aboutPlanka_title: 'Om PLANKA',
+      aboutPlanka_title: 'Om Trelle',
       accessToken: 'Adgangstoken',
       account: 'Konto',
       actions: 'Handlinger',
@@ -157,8 +157,8 @@ export default {
       customFieldGroups_title: 'Brugerdefinerede feltgrupper',
       customField_title: 'Brugerdefineret felt',
       customFields_title: 'Brugerdefinerede felter',
-      discoverPlankaPro: '✨ Flere funktioner til dine boards: Opdag PLANKA Pro',
-      discoverPlankaPro_title: 'Opdag PLANKA Pro',
+      discoverPlankaPro: '✨ Flere funktioner til dine boards: Opdag Trelle Pro',
+      discoverPlankaPro_title: 'Opdag Trelle Pro',
       upgradeTeamToPro_title: 'Opgrader team til Pro',
       proFeatureCalendar: '✨ Kalendervisning til dine boards',
       proFeatureRecurringCards: '✨ Tilbagevendende kort og automatisering',
@@ -317,7 +317,7 @@ export default {
       passwordIsSet: 'Adgangskode er indstillet',
       phone: 'Telefon',
       plankaUsesAppriseToSendNotificationsToOver100PopularServices:
-        'PLANKA bruger <1><0>Apprise</0></1> til at sende notifikationer til over 100 populære tjenester.',
+        'Trelle bruger <1><0>Apprise</0></1> til at sende notifikationer til over 100 populære tjenester.',
       port: 'Port',
       preferences: 'Præferencer',
       pressPasteShortcutToAddAttachmentFromClipboard:
@@ -325,11 +325,11 @@ export default {
       private: 'Privat',
       proFeatureDashboard: '✨ Ét dashboard på tværs af alle projekter',
       proFeatureExport: '✨ Kort som PDF til din rapportering',
-      proFeatureMobile: '✨ PLANKA på mobil og tablet',
+      proFeatureMobile: '✨ Trelle på mobil og tablet',
       proFeatureSso: '✨ Log på med virksomhedens brugerkatalog (SSO)',
       proFeatureThemes: '✨ Fem temaer og din egen accentfarve',
       proFeatureTimeline: '✨ Tidslinje: et helt år på én akse',
-      proTrialSelfHosted: '✨ Prøv PLANKA Pro i 30 dage på din egen server',
+      proTrialSelfHosted: '✨ Prøv Trelle Pro i 30 dage på din egen server',
       project: 'Projekt',
       projectNotFound_title: 'Projekt ikke fundet',
       projectOwner: 'Projektejer',

@@ -21,7 +21,7 @@ export default {
   translation: {
     common: {
       aboutApp_title: 'Σχετικά με την εφαρμογή',
-      aboutPlanka_title: 'Σχετικά με το PLANKA',
+      aboutPlanka_title: 'Σχετικά με το Trelle',
       accessToken: 'Διακριτικό πρόσβασης',
       account: 'Λογαριασμός',
       actions: 'Ενέργειες',
@@ -172,19 +172,19 @@ export default {
       customField_title: 'Προσαρμοσμένο πεδίο',
       customFields_title: 'Προσαρμοσμένα πεδία',
       discoverPlankaPro:
-        '✨ Περισσότερες λειτουργίες για τους πίνακές σας: Ανακαλύψτε το PLANKA Pro',
-      discoverPlankaPro_title: 'Ανακαλύψτε το PLANKA Pro',
+        '✨ Περισσότερες λειτουργίες για τους πίνακές σας: Ανακαλύψτε το Trelle Pro',
+      discoverPlankaPro_title: 'Ανακαλύψτε το Trelle Pro',
       upgradeTeamToPro_title: 'Αναβαθμίστε την ομάδα σε Pro',
       proFeatureCalendar: '✨ Προβολή ημερολογίου για τους πίνακές σας',
       proFeatureRecurringCards: '✨ Επαναλαμβανόμενες κάρτες και αυτοματισμός',
       proFeatureGuestRoles: '✨ Ρόλοι επισκεπτών και εξωτερική συνεργασία',
       proFeatureDashboard: '✨ Ένας πίνακας ελέγχου για όλα τα έργα',
       proFeatureExport: '✨ Κάρτες σε PDF για τις αναφορές σας',
-      proFeatureMobile: '✨ Το PLANKA σε κινητά και tablet',
+      proFeatureMobile: '✨ Το Trelle σε κινητά και tablet',
       proFeatureSso: '✨ Σύνδεση με τον κατάλογο της εταιρείας σας (SSO)',
       proFeatureThemes: '✨ Πέντε θέματα και το δικό σας χρώμα τονισμού',
       proFeatureTimeline: '✨ Timeline: όλη η χρονιά σε έναν άξονα',
-      proTrialSelfHosted: '✨ Δοκιμάστε το PLANKA Pro για 30 ημέρες στον δικό σας διακομιστή',
+      proTrialSelfHosted: '✨ Δοκιμάστε το Trelle Pro για 30 ημέρες στον δικό σας διακομιστή',
       dismissProBannerFor30Days: 'Κλείσιμο για 30 ημέρες',
       customerPanel_title: 'Πίνακας πελάτη',
       dangerZone_title: 'Επικίνδυνη ζώνη',
@@ -367,7 +367,7 @@ export default {
       passwordIsSet: 'Ο κωδικός πρόσβασης έχει οριστεί',
       phone: 'Τηλέφωνο',
       plankaUsesAppriseToSendNotificationsToOver100PopularServices:
-        'Το PLANKA χρησιμοποιεί το <1><0>Apprise</0></1> για να στέλνει ειδοποιήσεις σε πάνω από 100 δημοφιλείς υπηρεσίες.',
+        'Το Trelle χρησιμοποιεί το <1><0>Apprise</0></1> για να στέλνει ειδοποιήσεις σε πάνω από 100 δημοφιλείς υπηρεσίες.',
       port: 'Θύρα',
       preferences: 'Προτιμήσεις',
       pressPasteShortcutToAddAttachmentFromClipboard:

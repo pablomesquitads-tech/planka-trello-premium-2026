@@ -287,7 +287,7 @@ const Content = React.memo(() => {
             </div>
             <div className={styles.poweredBy}>
               <p className={styles.poweredByText}>
-                <strong>Trelle Premium 2026</strong> &bull; Edição Butler & Multi-Views
+                <strong>Trelle</strong> &bull; versão modificada do PLANKA (Fair Use License)
               </p>
             </div>
           </div>

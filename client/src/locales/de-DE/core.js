@@ -21,7 +21,7 @@ export default {
   translation: {
     common: {
       aboutApp_title: 'Über die App',
-      aboutPlanka_title: 'Über PLANKA',
+      aboutPlanka_title: 'Über Trelle',
       accessToken: 'Zugriffstoken',
       account: 'Konto',
       actions: 'Aktionen',
@@ -178,8 +178,8 @@ export default {
       disable2fa_title: 'Zwei-Faktor-Authentifizierung deaktivieren',
       disable2faWarning:
         'Sie müssen Ihr aktuelles Passwort und einen TOTP-Code bestätigen. Bestehende Sitzungen bleiben angemeldet.',
-      discoverPlankaPro: '✨ Mehr Features für eure Boards: PLANKA Pro entdecken',
-      discoverPlankaPro_title: 'PLANKA Pro entdecken',
+      discoverPlankaPro: '✨ Mehr Features für eure Boards: Trelle Pro entdecken',
+      discoverPlankaPro_title: 'Trelle Pro entdecken',
       dismissProBannerFor30Days: 'Für 30 Tage schließen',
       enable2fa_title: 'Zwei-Faktor-Authentifizierung aktivieren',
       enabledOn: 'Aktiviert am {{date}}',
@@ -359,7 +359,7 @@ export default {
       passwordIsSet: 'Passwort ist gesetzt',
       phone: 'Telefon',
       plankaUsesAppriseToSendNotificationsToOver100PopularServices:
-        'PLANKA verwendet <1><0>Apprise</0></1>, um Benachrichtigungen an über 100 beliebte Dienste zu senden.',
+        'Trelle verwendet <1><0>Apprise</0></1>, um Benachrichtigungen an über 100 beliebte Dienste zu senden.',
       port: 'Port',
       preferences: 'Voreinstellungen',
       pressPasteShortcutToAddAttachmentFromClipboard:
@@ -369,12 +369,12 @@ export default {
       proFeatureDashboard: '✨ Ein Dashboard über alle Projekte',
       proFeatureExport: '✨ Karten als PDF für eure Berichte',
       proFeatureGuestRoles: '✨ Gastrollen & externe Zusammenarbeit',
-      proFeatureMobile: '✨ PLANKA auf dem Handy und Tablet',
+      proFeatureMobile: '✨ Trelle auf dem Handy und Tablet',
       proFeatureRecurringCards: '✨ Wiederkehrende Karten',
       proFeatureSso: '✨ Anmeldung am Firmenverzeichnis (SSO)',
       proFeatureThemes: '✨ Fünf Themes und eure Akzentfarbe',
       proFeatureTimeline: '✨ Timeline: das ganze Jahr auf einer Achse',
-      proTrialSelfHosted: '✨ PLANKA Pro 30 Tage auf eurem Server testen',
+      proTrialSelfHosted: '✨ Trelle Pro 30 Tage auf eurem Server testen',
       project: 'Projekt',
       projectNotFound_title: 'Projekt nicht gefunden',
       projectOwner: 'Projektleitung',

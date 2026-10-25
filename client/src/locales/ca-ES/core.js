@@ -21,7 +21,7 @@ export default {
   translation: {
     common: {
       aboutApp_title: "Quant a l'aplicació",
-      aboutPlanka_title: 'Quant a PLANKA',
+      aboutPlanka_title: 'Quant a Trelle',
       accessToken: "Token d'accés",
       account: 'Compte',
       actions: 'Accions',
@@ -161,8 +161,8 @@ export default {
       customFieldGroups_title: 'Grups de camps personalitzats',
       customField_title: 'Camp personalitzat',
       customFields_title: 'Camps personalitzats',
-      discoverPlankaPro: '✨ Més funcions per als vostres taulers: Descobriu PLANKA Pro',
-      discoverPlankaPro_title: 'Descobriu PLANKA Pro',
+      discoverPlankaPro: '✨ Més funcions per als vostres taulers: Descobriu Trelle Pro',
+      discoverPlankaPro_title: 'Descobriu Trelle Pro',
       upgradeTeamToPro_title: "Actualitzeu l'equip a Pro",
       proFeatureCalendar: '✨ Vista de calendari per als vostres taulers',
       proFeatureRecurringCards: '✨ Targetes recurrents i automatització',
@@ -321,7 +321,7 @@ export default {
       passwordIsSet: 'La contrasenya està establerta',
       phone: 'Telèfon',
       plankaUsesAppriseToSendNotificationsToOver100PopularServices:
-        'PLANKA utilitza <1><0>Apprise</0></1> per enviar notificacions a més de 100 serveis populars.',
+        'Trelle utilitza <1><0>Apprise</0></1> per enviar notificacions a més de 100 serveis populars.',
       port: 'Port',
       preferences: 'Preferències',
       pressPasteShortcutToAddAttachmentFromClipboard:
@@ -329,11 +329,11 @@ export default {
       private: 'Privat',
       proFeatureDashboard: '✨ Un únic panell per a tots els projectes',
       proFeatureExport: '✨ Targetes en PDF per als vostres informes',
-      proFeatureMobile: '✨ PLANKA al mòbil i a la tauleta',
+      proFeatureMobile: '✨ Trelle al mòbil i a la tauleta',
       proFeatureSso: '✨ Inici de sessió amb el directori de la vostra empresa (SSO)',
       proFeatureThemes: "✨ Cinc temes i el vostre color d'accent",
       proFeatureTimeline: '✨ Línia de temps: tot un any en un sol eix',
-      proTrialSelfHosted: '✨ Proveu PLANKA Pro durant 30 dies al vostre propi servidor',
+      proTrialSelfHosted: '✨ Proveu Trelle Pro durant 30 dies al vostre propi servidor',
       project: 'Projecte',
       projectNotFound_title: "No s'ha trobat el projecte",
       projectOwner: 'Propietari del projecte',

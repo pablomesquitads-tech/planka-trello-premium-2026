@@ -45,11 +45,6 @@ const UserActionsStep = React.memo(({ onClose }) => {
     onClose();
   }, [onClose, dispatch]);
 
-  const handleAboutClick = useCallback(() => {
-    dispatch(entryActions.openAboutModal());
-    onClose();
-  }, [onClose, dispatch]);
-
   const handleLogoutClick = useCallback(() => {
     dispatch(entryActions.logout());
   }, [dispatch]);
@@ -106,27 +101,6 @@ const UserActionsStep = React.memo(({ onClose }) => {
           <Menu.Item className={styles.menuItem} onClick={handleKeyboardShortcutsClick}>
             <Icon name="keyboard" className={styles.menuItemIcon} />
             {t('common.keyboardShortcuts')}
-          </Menu.Item>
-          <Menu.Item className={styles.menuItem} onClick={handleAboutClick}>
-            <Icon name="info circle" className={styles.menuItemIcon} />
-            {t('common.aboutApp', {
-              context: 'title',
-            })}
-          </Menu.Item>
-          <Menu.Item
-            href={
-              withAdministration
-                ? 'https://planka.app/trial?ref=app-menu'
-                : 'https://planka.app/pro?ref=app-menu'
-            }
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.proMenuItem}
-          >
-            <Icon name="gem" className={styles.proMenuItemIcon} />
-            {withAdministration
-              ? t('common.upgradeTeamToPro', { context: 'title' })
-              : t('common.discoverPlankaPro', { context: 'title' })}
           </Menu.Item>
           <hr className={styles.divider} />
           <Menu.Item

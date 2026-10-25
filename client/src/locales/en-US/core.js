@@ -16,7 +16,7 @@ export default {
   translation: {
     common: {
       aboutApp_title: 'About the App',
-      aboutPlanka_title: 'About PLANKA',
+      aboutPlanka_title: 'About Trelle',
       accessToken: 'Access token',
       account: 'Account',
       actions: 'Actions',
@@ -156,8 +156,8 @@ export default {
       disable2fa_title: 'Disable Two-Factor Authentication',
       disable2faWarning:
         'You will need to confirm your current password and a TOTP code. Existing sessions stay signed in.',
-      discoverPlankaPro: '✨ More features for your boards: Discover PLANKA Pro',
-      discoverPlankaPro_title: 'Discover PLANKA Pro',
+      discoverPlankaPro: '✨ More features for your boards: Discover Trelle Pro',
+      discoverPlankaPro_title: 'Discover Trelle Pro',
       dismissProBannerFor30Days: 'Dismiss for 30 days',
       enable2fa_title: 'Enable Two-Factor Authentication',
       enabledOn: 'Enabled on {{date}}',
@@ -336,7 +336,7 @@ export default {
       passwordIsSet: 'Password is set',
       phone: 'Phone',
       plankaUsesAppriseToSendNotificationsToOver100PopularServices:
-        'PLANKA uses <1><0>Apprise</0></1> to send notifications to over 100 popular services.',
+        'Trelle uses <1><0>Apprise</0></1> to send notifications to over 100 popular services.',
       port: 'Port',
       preferences: 'Preferences',
       pressPasteShortcutToAddAttachmentFromClipboard:
@@ -346,12 +346,12 @@ export default {
       proFeatureDashboard: '✨ One dashboard across every project',
       proFeatureExport: '✨ Cards as PDF for your reporting',
       proFeatureGuestRoles: '✨ Guest Roles & External Collaboration',
-      proFeatureMobile: '✨ PLANKA on phones and tablets',
+      proFeatureMobile: '✨ Trelle on phones and tablets',
       proFeatureRecurringCards: '✨ Recurring Cards',
       proFeatureSso: '✨ Sign in with your company directory (SSO)',
       proFeatureThemes: '✨ Five themes and your own accent color',
       proFeatureTimeline: '✨ Timeline: a whole year on one axis',
-      proTrialSelfHosted: '✨ Try PLANKA Pro for 30 days on your own server',
+      proTrialSelfHosted: '✨ Try Trelle Pro for 30 days on your own server',
       project: 'Project',
       projectNotFound_title: 'Project Not Found',
       projectOwner: 'Project owner',

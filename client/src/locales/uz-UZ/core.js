@@ -21,7 +21,7 @@ export default {
   translation: {
     common: {
       aboutApp_title: 'Ilova haqida',
-      aboutPlanka_title: 'PLANKA haqida',
+      aboutPlanka_title: 'Trelle haqida',
       accessToken: 'Kirish tokeni',
       account: 'Profil',
       actions: 'Amallar',
@@ -154,8 +154,8 @@ export default {
       customFieldGroups_title: 'Maxsus maydon guruhlari',
       customField_title: 'Maxsus maydon',
       customFields_title: 'Maxsus maydonlar',
-      discoverPlankaPro: "✨ Doskalaringiz uchun ko'proq imkoniyatlar: PLANKA Pro ni kashf eting",
-      discoverPlankaPro_title: 'PLANKA Pro ni kashf eting',
+      discoverPlankaPro: "✨ Doskalaringiz uchun ko'proq imkoniyatlar: Trelle Pro ni kashf eting",
+      discoverPlankaPro_title: 'Trelle Pro ni kashf eting',
       upgradeTeamToPro_title: 'Jamoani Pro ga yangilash',
       proFeatureCalendar: "✨ Doskalaringiz uchun kalendar ko'rinishi",
       proFeatureRecurringCards: '✨ Takrorlanuvchi kartalar va avtomatlashtirish',
@@ -343,7 +343,7 @@ export default {
       passwordIsSet: "Parol o'rnatilgan",
       phone: 'Telefon',
       plankaUsesAppriseToSendNotificationsToOver100PopularServices:
-        'PLANKA 100 dan ortiq mashhur xizmatlarga bildirishnomalar yuborish uchun <1><0>Apprise</0></1> dan foydalanadi.',
+        'Trelle 100 dan ortiq mashhur xizmatlarga bildirishnomalar yuborish uchun <1><0>Apprise</0></1> dan foydalanadi.',
       port: 'Port',
       preferences: 'Afzalliklar',
       pressPasteShortcutToAddAttachmentFromClipboard:
@@ -351,11 +351,11 @@ export default {
       private: 'Shaxsiy',
       proFeatureDashboard: '✨ Barcha loyihalar uchun yagona boshqaruv paneli',
       proFeatureExport: "✨ Hisobotlaringiz uchun kartalar PDF ko'rinishida",
-      proFeatureMobile: '✨ Telefon va planshetlarda PLANKA',
+      proFeatureMobile: '✨ Telefon va planshetlarda Trelle',
       proFeatureSso: '✨ Kompaniya katalogingiz orqali kirish (SSO)',
       proFeatureThemes: '✨ Beshta mavzu va shaxsiy akssent rangingiz',
       proFeatureTimeline: "✨ Vaqt chizig'i: butun yil bitta o'qda",
-      proTrialSelfHosted: "✨ PLANKA Pro ni o'z serveringizda 30 kun sinab ko'ring",
+      proTrialSelfHosted: "✨ Trelle Pro ni o'z serveringizda 30 kun sinab ko'ring",
       project: 'Loyiha',
       projectNotFound_title: 'Loyiha topilmadi',
       projectOwner: 'Loyiha egasi',

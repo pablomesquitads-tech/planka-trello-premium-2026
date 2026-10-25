@@ -21,7 +21,7 @@ export default {
   translation: {
     common: {
       aboutApp_title: 'Tentang aplikasi',
-      aboutPlanka_title: 'Tentang PLANKA',
+      aboutPlanka_title: 'Tentang Trelle',
       accessToken: 'Token akses',
       account: 'Akun',
       actions: 'Tindakan',
@@ -158,8 +158,8 @@ export default {
       customFieldGroups_title: 'Grup bidang kustom',
       customField_title: 'Bidang kustom',
       customFields_title: 'Bidang kustom',
-      discoverPlankaPro: '✨ Lebih banyak fitur untuk papan Anda: Temukan PLANKA Pro',
-      discoverPlankaPro_title: 'Temukan PLANKA Pro',
+      discoverPlankaPro: '✨ Lebih banyak fitur untuk papan Anda: Temukan Trelle Pro',
+      discoverPlankaPro_title: 'Temukan Trelle Pro',
       upgradeTeamToPro_title: 'Tingkatkan tim ke Pro',
       proFeatureCalendar: '✨ Tampilan Kalender untuk papan Anda',
       proFeatureRecurringCards: '✨ Kartu Berulang & Otomatisasi',
@@ -344,7 +344,7 @@ export default {
       passwordIsSet: 'Kata sandi telah diatur',
       phone: 'Ponsel',
       plankaUsesAppriseToSendNotificationsToOver100PopularServices:
-        'PLANKA menggunakan <1><0>Apprise</0></1> untuk mengirim notifikasi ke lebih dari 100 layanan populer.',
+        'Trelle menggunakan <1><0>Apprise</0></1> untuk mengirim notifikasi ke lebih dari 100 layanan populer.',
       port: 'Port',
       preferences: 'Preferensi',
       pressPasteShortcutToAddAttachmentFromClipboard:
@@ -352,11 +352,11 @@ export default {
       private: 'Pribadi',
       proFeatureDashboard: '✨ Satu dasbor untuk semua proyek',
       proFeatureExport: '✨ Kartu sebagai PDF untuk laporan Anda',
-      proFeatureMobile: '✨ PLANKA di ponsel dan tablet',
+      proFeatureMobile: '✨ Trelle di ponsel dan tablet',
       proFeatureSso: '✨ Masuk dengan direktori perusahaan Anda (SSO)',
       proFeatureThemes: '✨ Lima tema dan warna aksen Anda sendiri',
       proFeatureTimeline: '✨ Timeline: satu tahun penuh dalam satu sumbu',
-      proTrialSelfHosted: '✨ Coba PLANKA Pro selama 30 hari di server Anda sendiri',
+      proTrialSelfHosted: '✨ Coba Trelle Pro selama 30 hari di server Anda sendiri',
       project: 'Proyek',
       projectNotFound_title: 'Proyek tidak ditemukan',
       projectOwner: 'Pemilik proyek',

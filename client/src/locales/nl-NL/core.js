@@ -21,7 +21,7 @@ export default {
   translation: {
     common: {
       aboutApp_title: 'Over de app',
-      aboutPlanka_title: 'Over PLANKA',
+      aboutPlanka_title: 'Over Trelle',
       accessToken: 'Toegangstoken',
       account: 'Account',
       actions: 'Acties',
@@ -157,8 +157,8 @@ export default {
       customFieldGroups_title: 'Aangepaste veldgroepen',
       customField_title: 'Aangepast veld',
       customFields_title: 'Aangepaste velden',
-      discoverPlankaPro: '✨ Meer functies voor uw borden: Ontdek PLANKA Pro',
-      discoverPlankaPro_title: 'Ontdek PLANKA Pro',
+      discoverPlankaPro: '✨ Meer functies voor uw borden: Ontdek Trelle Pro',
+      discoverPlankaPro_title: 'Ontdek Trelle Pro',
       upgradeTeamToPro_title: 'Team upgraden naar Pro',
       proFeatureCalendar: '✨ Kalenderweergave voor uw borden',
       proFeatureRecurringCards: '✨ Terugkerende kaarten en automatisering',
@@ -346,7 +346,7 @@ export default {
       passwordIsSet: 'Wachtwoord is ingesteld',
       phone: 'Telefoon',
       plankaUsesAppriseToSendNotificationsToOver100PopularServices:
-        'PLANKA gebruikt <1><0>Apprise</0></1> om meldingen naar meer dan 100 populaire services te sturen.',
+        'Trelle gebruikt <1><0>Apprise</0></1> om meldingen naar meer dan 100 populaire services te sturen.',
       port: 'Poort',
       preferences: 'Voorkeuren',
       pressPasteShortcutToAddAttachmentFromClipboard:
@@ -354,11 +354,11 @@ export default {
       private: 'Privé',
       proFeatureDashboard: '✨ Eén dashboard voor al uw projecten',
       proFeatureExport: '✨ Kaarten als PDF voor uw rapportages',
-      proFeatureMobile: '✨ PLANKA op telefoon en tablet',
+      proFeatureMobile: '✨ Trelle op telefoon en tablet',
       proFeatureSso: '✨ Inloggen met uw bedrijfsdirectory (SSO)',
       proFeatureThemes: "✨ Vijf thema's en uw eigen accentkleur",
       proFeatureTimeline: '✨ Tijdlijn: het hele jaar op één as',
-      proTrialSelfHosted: '✨ Probeer PLANKA Pro 30 dagen op uw eigen server',
+      proTrialSelfHosted: '✨ Probeer Trelle Pro 30 dagen op uw eigen server',
       project: 'Project',
       projectNotFound_title: 'Project niet gevonden',
       projectOwner: 'Projecteigenaar',
