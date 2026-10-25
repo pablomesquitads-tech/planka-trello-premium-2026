@@ -6,8 +6,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Icon, Button, Input, Dropdown } from 'semantic-ui-react';
-import selectors from '../../../../selectors';
-import entryActions from '../../../../entry-actions';
+import selectors from '../../../selectors';
+import entryActions from '../../../entry-actions';
 import styles from './GlobalInboxDrawer.module.scss';
 
 const GlobalInboxDrawer = React.memo(({ isOpen, onClose }) => {

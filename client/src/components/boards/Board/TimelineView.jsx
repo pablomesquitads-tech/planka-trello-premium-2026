@@ -6,8 +6,8 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Icon, Button, Dropdown } from 'semantic-ui-react';
-import selectors from '../../../../selectors';
-import entryActions from '../../../../entry-actions';
+import selectors from '../../../selectors';
+import entryActions from '../../../entry-actions';
 import styles from './TimelineView.module.scss';
 
 const DAY_WIDTH = 48; // px per day

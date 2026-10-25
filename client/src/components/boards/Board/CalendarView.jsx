@@ -6,8 +6,8 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Icon, Button } from 'semantic-ui-react';
-import selectors from '../../../../selectors';
-import entryActions from '../../../../entry-actions';
+import selectors from '../../../selectors';
+import entryActions from '../../../entry-actions';
 import styles from './CalendarView.module.scss';
 
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];

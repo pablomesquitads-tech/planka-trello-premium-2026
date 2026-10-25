@@ -6,7 +6,7 @@
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { Card as UICard, Icon } from 'semantic-ui-react';
-import selectors from '../../../../selectors';
+import selectors from '../../../selectors';
 import styles from './DashboardView.module.scss';
 
 const DashboardView = React.memo(() => {
