@@ -90,9 +90,9 @@
   "dependencies": {
     "@ballerina/highlightjs-ballerina": "^1.0.1",
     "@diplodoc/cut-extension": "^1.1.1",
-    "@diplodoc/transform": "^4.70.2",
+    "@diplodoc/transform": "4.70.2",
     "@gravity-ui/components": "^4.18.0",
-    "@gravity-ui/markdown-editor": "^15.35.1",
+    "@gravity-ui/markdown-editor": "15.35.1",
     "@gravity-ui/uikit": "^7.34.0",
     "@juggle/resize-observer": "^3.4.0",
     "@vitejs/plugin-react": "^5.2.0",
