@@ -220,14 +220,14 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
     // Denormalization
+    // Optional for inbox cards; singular associations are nullable by default,
+    // and Waterline rejects an explicit allowNull on them
     boardId: {
       model: 'Board',
-      allowNull: true,
       columnName: 'board_id',
     },
     listId: {
       model: 'List',
-      allowNull: true,
       columnName: 'list_id',
     },
     creatorUserId: {

@@ -29,7 +29,7 @@ ${lists.map((l) => `- Name: "${l.name}", ID: "${l.id}"`).join('\n')}
 Available Labels in Board:
 ${labels.map((lb) => `- Name: "${lb.name}", ID: "${lb.id}", Color: "${lb.color}"`).join('\n')}`;
 
-    const systemPrompt = `You are an expert automation architect for Planka/Trello.
+    const systemPrompt = `You are an expert automation architect for Trelle.
 Convert the user request into an automation rule configuration.
 
 ${contextInfo}
