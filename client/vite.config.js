@@ -38,7 +38,9 @@ const createEjsTemplate = () => ({
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: './',
+  // Vercel serves the static build without the server-side index.ejs rewrite,
+  // so assets need absolute paths for deep links like /boards/:id to load
+  base: process.env.VERCEL ? '/' : './',
   plugins: [
     commonjs(),
     nodePolyfills({
