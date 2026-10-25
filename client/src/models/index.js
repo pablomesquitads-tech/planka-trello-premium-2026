@@ -24,6 +24,9 @@ import Comment from './Comment';
 import Activity from './Activity';
 import Notification from './Notification';
 import NotificationService from './NotificationService';
+import AutomationRule from './AutomationRule';
+import CardMirror from './CardMirror';
+import CardDependency from './CardDependency';
 
 export {
   Webhook,
@@ -47,4 +50,7 @@ export {
   Activity,
   Notification,
   NotificationService,
+  AutomationRule,
+  CardMirror,
+  CardDependency,
 };

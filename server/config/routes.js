@@ -286,6 +286,27 @@ module.exports.routes = {
   'PATCH /api/comments/:id': 'comments/update',
   'DELETE /api/comments/:id': 'comments/delete',
 
+  // 2026 Trello Premium Parity Routes
+  'GET /api/boards/:boardId/automation-rules': 'automation-rules/index-in-board',
+  'POST /api/boards/:boardId/automation-rules': 'automation-rules/create',
+  'PATCH /api/automation-rules/:id': 'automation-rules/update',
+  'DELETE /api/automation-rules/:id': 'automation-rules/delete',
+  'POST /api/automation-rules/:ruleId/trigger': 'automation-rules/trigger-button',
+  'POST /api/boards/:boardId/automation-rules/ai-build': 'automation-rules/ai-build',
+
+  'POST /api/cards/:id/ai-extract-checklist': 'cards/ai-extract-checklist',
+  'POST /api/cards/:id/ai-summarize': 'cards/ai-summarize',
+  'POST /api/cards/:id/ai-refine-description': 'cards/ai-refine-description',
+
+  'GET /api/inbox-cards': 'cards/index-inbox',
+  'POST /api/inbox-cards': 'cards/create-inbox',
+
+  'POST /api/cards/:id/mirror': 'cards/mirror',
+  'DELETE /api/card-mirrors/:mirrorId': 'cards/delete-mirror',
+
+  'POST /api/cards/:id/dependencies': 'cards/add-dependency',
+  'DELETE /api/cards/:id/dependencies/:dependencyId': 'cards/delete-dependency',
+
   'GET /api/boards/:boardId/actions': 'actions/index-in-board',
   'GET /api/cards/:cardId/actions': 'actions/index-in-card',
 

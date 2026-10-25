@@ -15,6 +15,7 @@ import entryActions from '../../../../entry-actions';
 import { BoardContexts, BoardViews } from '../../../../constants/Enums';
 import { BoardViewIcons } from '../../../../constants/Icons';
 import ActionsStep from './ActionsStep';
+import AutomationsModal from '../AutomationsModal/AutomationsModal';
 
 import styles from './RightSide.module.scss';
 
@@ -32,6 +33,7 @@ const RightSide = React.memo(() => {
 
   const dispatch = useDispatch();
   const [t] = useTranslation();
+  const [isAutomationsOpen, setIsAutomationsOpen] = React.useState(false);
 
   const handleSelectViewClick = useCallback(
     ({ currentTarget: { value: view } }) => {
@@ -42,7 +44,7 @@ const RightSide = React.memo(() => {
 
   const ActionsPopup = usePopup(ActionsStep);
 
-  const views = [BoardViews.GRID, BoardViews.LIST];
+  const views = [BoardViews.GRID, BoardViews.LIST, BoardViews.CALENDAR, BoardViews.TIMELINE, BoardViews.TABLE, BoardViews.DASHBOARD];
   if (board.context === BoardContexts.BOARD) {
     views.unshift(BoardViews.KANBAN);
   }
@@ -67,6 +69,13 @@ const RightSide = React.memo(() => {
         </div>
       </div>
       <div className={styles.action}>
+        <Tooltip content="Butler Automations">
+          <button type="button" className={styles.button} onClick={() => setIsAutomationsOpen(true)}>
+            <Icon fitted name="lightning" color="yellow" />
+          </button>
+        </Tooltip>
+      </div>
+      <div className={styles.action}>
         <ActionsPopup>
           <Tooltip content={t('common.openBoardActions')}>
             <button type="button" className={styles.button}>
@@ -75,6 +84,7 @@ const RightSide = React.memo(() => {
           </Tooltip>
         </ActionsPopup>
       </div>
+      <AutomationsModal isOpen={isAutomationsOpen} onClose={() => setIsAutomationsOpen(false)} />
     </>
   );
 });

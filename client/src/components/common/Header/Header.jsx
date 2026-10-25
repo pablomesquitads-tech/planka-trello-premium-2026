@@ -19,6 +19,7 @@ import { BoardMembershipRoles, BoardViews, UserRoles } from '../../../constants/
 import UserAvatar from '../../users/UserAvatar';
 import UserActionsStep from '../../users/UserActionsStep';
 import NotificationsStep from '../../notifications/NotificationsStep';
+import GlobalInboxDrawer from './GlobalInboxDrawer';
 
 import styles from './Header.module.scss';
 
@@ -33,6 +34,7 @@ const Header = React.memo(() => {
   const notificationIds = useSelector(selectors.selectNotificationIdsForCurrentUser);
   const isFavoritesEnabled = useSelector(selectors.selectIsFavoritesEnabled);
   const isEditModeEnabled = useSelector(selectors.selectIsEditModeEnabled);
+  const [isInboxOpen, setIsInboxOpen] = React.useState(false);
 
   const withFavoritesToggler = useSelector(
     // TODO: use selector instead?
@@ -159,6 +161,14 @@ const Header = React.memo(() => {
               </Menu.Item>
             </Tooltip>
           )}
+          <Tooltip content="Quick Capture Inbox">
+            <Menu.Item
+              className={classNames(styles.item, styles.itemHoverable)}
+              onClick={() => setIsInboxOpen(true)}
+            >
+              <Icon fitted name="inbox" />
+            </Menu.Item>
+          </Tooltip>
           <NotificationsPopup>
             <Tooltip content={t('common.openNotifications')}>
               <Menu.Item className={classNames(styles.item, styles.itemHoverable)}>

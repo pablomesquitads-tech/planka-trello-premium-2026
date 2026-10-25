@@ -350,6 +350,54 @@ const List = React.memo(({ id, index }) => {
     </Droppable>
   );
 
+  if (list && list.isCollapsed) {
+    return (
+      <div
+        style={{
+          width: '44px',
+          minWidth: '44px',
+          backgroundColor: '#ebecf0',
+          borderRadius: '6px',
+          margin: '0 6px',
+          padding: '12px 6px',
+          cursor: 'pointer',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '12px',
+          boxShadow: '0 1px 2px rgba(9, 30, 66, 0.08)',
+        }}
+        onClick={() => dispatch(entryActions.updateList(id, { isCollapsed: false }))}
+        title="Click to expand list"
+      >
+        <Icon name="angle double right" />
+        <span
+          style={{
+            writingMode: 'vertical-rl',
+            transform: 'rotate(180deg)',
+            fontWeight: 600,
+            fontSize: '0.85rem',
+            color: '#172b4d',
+          }}
+        >
+          {list.name}
+        </span>
+        <span
+          style={{
+            backgroundColor: '#0052cc',
+            color: 'white',
+            borderRadius: '10px',
+            padding: '2px 6px',
+            fontSize: '0.7rem',
+            fontWeight: 700,
+          }}
+        >
+          {cardIds.length}
+        </span>
+      </div>
+    );
+  }
+
   return (
     <Draggable
       draggableId={`list:${id}`}
@@ -395,6 +443,22 @@ const List = React.memo(({ id, index }) => {
                     />
                   )}
                   {list.name}
+                  {list.wipLimit && (
+                    <span
+                      style={{
+                        marginLeft: '8px',
+                        fontSize: '0.75rem',
+                        fontWeight: 'bold',
+                        padding: '2px 6px',
+                        borderRadius: '10px',
+                        backgroundColor: cardIds.length > list.wipLimit ? '#ffebe6' : '#ebecf0',
+                        color: cardIds.length > list.wipLimit ? '#de350b' : '#5e6c84',
+                        border: cardIds.length > list.wipLimit ? '1px solid #de350b' : 'none',
+                      }}
+                    >
+                      {cardIds.length}/{list.wipLimit}
+                    </span>
+                  )}
                 </div>
               )}
               {list.type !== ListTypes.ACTIVE && (

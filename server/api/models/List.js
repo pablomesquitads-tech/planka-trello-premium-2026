@@ -149,6 +149,16 @@ module.exports = {
       isIn: COLORS,
       allowNull: true,
     },
+    wipLimit: {
+      type: 'number',
+      allowNull: true,
+      columnName: 'wip_limit',
+    },
+    isCollapsed: {
+      type: 'boolean',
+      defaultsTo: false,
+      columnName: 'is_collapsed',
+    },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗

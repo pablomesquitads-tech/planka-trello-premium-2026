@@ -160,6 +160,56 @@ const ProjectContent = React.memo(() => {
   const [descriptionDraft, setDescriptionDraft] = useState(null);
   const [isEditDescriptionOpened, setIsEditDescriptionOpened] = useState(false);
   const [recoveredDraftConflict, setRecoveredDraftConflict] = useState(false);
+  const [aiSummary, setAiSummary] = useState(null);
+  const [isAiSummarizing, setIsAiSummarizing] = useState(false);
+  const [isAiChecklisting, setIsAiChecklisting] = useState(false);
+  const [isAiRefining, setIsAiRefining] = useState(false);
+
+  const handleAiSummarize = useCallback(async () => {
+    try {
+      setIsAiSummarizing(true);
+      const res = await fetch(`/api/cards/${card.id}/ai-summarize`, { method: 'POST' });
+      if (res.ok) {
+        const data = await res.json();
+        setAiSummary(data.summary);
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsAiSummarizing(false);
+    }
+  }, [card.id]);
+
+  const handleAiChecklist = useCallback(async () => {
+    try {
+      setIsAiChecklisting(true);
+      await fetch(`/api/cards/${card.id}/ai-extract-checklist`, { method: 'POST' });
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsAiChecklisting(false);
+    }
+  }, [card.id]);
+
+  const handleAiRefine = useCallback(async () => {
+    try {
+      setIsAiRefining(true);
+      const text = descriptionDraft || card.description || '';
+      const res = await fetch(`/api/cards/${card.id}/ai-refine-description`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ draftText: text }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        dispatch(entryActions.updateCurrentCard({ description: data.description }));
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsAiRefining(false);
+    }
+  }, [card.id, descriptionDraft, card.description, dispatch]);
   const [, , setIsClosableActive] = useContext(ClosableContext);
 
   // Pick up a draft that an uncontrolled close (crash, killed tab) left behind.
@@ -542,6 +592,17 @@ const ProjectContent = React.memo(() => {
               )}
             </div>
           )}
+          {aiSummary && (
+            <div style={{ backgroundColor: '#ebf5ff', border: '1px solid #b3d4ff', borderRadius: '6px', padding: '12px', marginBottom: '16px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                <span style={{ fontWeight: 600, color: '#0052cc' }}>
+                  <Icon name="magic" /> Atlassian Intelligence Executive Summary
+                </span>
+                <Button icon="close" size="mini" basic onClick={() => setAiSummary(null)} />
+              </div>
+              <div style={{ fontSize: '0.9rem', color: '#172b4d', whiteSpace: 'pre-line' }}>{aiSummary}</div>
+            </div>
+          )}
           {(card.description || canEditDescription) && (
             <div className={classNames(styles.contentModule, styles.contentModuleDescription)}>
               <div className={styles.moduleWrapper}>
@@ -731,6 +792,36 @@ const ProjectContent = React.memo(() => {
               (canRestore && (isInArchiveList || isInTrashList)) ||
               (canArchive && !isInArchiveList) ||
               canDelete) && (
+              <div className={styles.actions}>
+                <span className={styles.actionsTitle}>Atlassian Intelligence AI</span>
+                <Button
+                  fluid
+                  className={classNames(styles.actionButton, styles.hidable)}
+                  onClick={handleAiSummarize}
+                  loading={isAiSummarizing}
+                >
+                  <Icon name="magic" className={styles.actionIcon} />
+                  Executive Summary
+                </Button>
+                <Button
+                  fluid
+                  className={classNames(styles.actionButton, styles.hidable)}
+                  onClick={handleAiChecklist}
+                  loading={isAiChecklisting}
+                >
+                  <Icon name="tasks" className={styles.actionIcon} />
+                  Text-to-Checklist
+                </Button>
+                <Button
+                  fluid
+                  className={classNames(styles.actionButton, styles.hidable)}
+                  onClick={handleAiRefine}
+                  loading={isAiRefining}
+                >
+                  <Icon name="pencil alternate" className={styles.actionIcon} />
+                  Refine Description
+                </Button>
+              </div>
               <div className={styles.actions}>
                 <span className={styles.actionsTitle}>{t('common.actions')}</span>
                 {canJoin && (

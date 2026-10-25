@@ -1,0 +1,145 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 16px;
+  overflow: hidden;
+  background-color: var(--theme-background-page, #f4f5f7);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.monthTitle {
+  margin: 0 0 0 12px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--theme-text-primary, #172b4d);
+}
+
+.gridHeader {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background-color: var(--theme-background-surface, #ffffff);
+  border: 1px solid var(--theme-border, #dfe1e6);
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+}
+
+.gridHeaderCell {
+  padding: 8px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--theme-text-secondary, #5e6c84);
+  border-right: 1px solid var(--theme-border, #dfe1e6);
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(5, minmax(90px, 1fr));
+  flex: 1;
+  background-color: var(--theme-background-surface, #ffffff);
+  border: 1px solid var(--theme-border, #dfe1e6);
+  border-radius: 0 0 6px 6px;
+  overflow-y: auto;
+}
+
+.cell {
+  border-right: 1px solid var(--theme-border, #dfe1e6);
+  border-bottom: 1px solid var(--theme-border, #dfe1e6);
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  min-height: 90px;
+
+  &:nth-child(7n) {
+    border-right: none;
+  }
+
+  &.otherMonth {
+    background-color: var(--theme-background-subtle, #fafbfc);
+    opacity: 0.6;
+  }
+
+  &.today {
+    background-color: #ebf5ff;
+  }
+}
+
+.cellHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.dayNumber {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--theme-text-secondary, #5e6c84);
+}
+
+.cardCountBadge {
+  background-color: #0052cc;
+  color: white;
+  border-radius: 10px;
+  padding: 1px 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.cellCards {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  overflow-y: auto;
+}
+
+.cardItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  background-color: var(--theme-background-card, #ffffff);
+  border: 1px solid #dfe1e6;
+  box-shadow: 0 1px 2px rgba(9, 30, 66, 0.08);
+  cursor: pointer;
+  font-size: 0.78rem;
+  transition: transform 0.1s, box-shadow 0.1s;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(9, 30, 66, 0.15);
+  }
+}
+
+.listPill {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.cardName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--theme-text-primary, #172b4d);
+}

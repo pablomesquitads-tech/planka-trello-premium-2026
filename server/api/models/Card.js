@@ -197,6 +197,19 @@ module.exports = {
       type: 'ref',
       columnName: 'list_changed_at',
     },
+    isInbox: {
+      type: 'boolean',
+      defaultsTo: false,
+      columnName: 'is_inbox',
+    },
+    scheduledStartTime: {
+      type: 'ref',
+      columnName: 'scheduled_start_time',
+    },
+    scheduledEndTime: {
+      type: 'ref',
+      columnName: 'scheduled_end_time',
+    },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
@@ -209,12 +222,12 @@ module.exports = {
     // Denormalization
     boardId: {
       model: 'Board',
-      required: true,
+      allowNull: true,
       columnName: 'board_id',
     },
     listId: {
       model: 'List',
-      required: true,
+      allowNull: true,
       columnName: 'list_id',
     },
     creatorUserId: {

@@ -27,6 +27,9 @@ import {
   TaskList,
   User,
   Webhook,
+  AutomationRule,
+  CardMirror,
+  CardDependency,
 } from './models';
 
 const orm = new ORM({
@@ -48,6 +51,9 @@ orm.register(
   TaskList,
   Task,
   Attachment,
+  AutomationRule,
+  CardMirror,
+  CardDependency,
   CustomFieldGroup,
   CustomField,
   CustomFieldValue,

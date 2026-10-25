@@ -86,6 +86,14 @@ module.exports = {
       defaultsTo: false,
       columnName: 'show_on_front_of_card',
     },
+    type: {
+      type: 'string',
+      isIn: ['text', 'number', 'date', 'checkbox', 'dropdown'],
+      defaultsTo: 'text',
+    },
+    options: {
+      type: 'json',
+    },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗

@@ -16,6 +16,10 @@ module.exports = {
     request: {
       type: 'ref',
     },
+    automationDepth: {
+      type: 'number',
+      defaultsTo: 1,
+    },
   },
 
   exits: {
@@ -149,6 +153,16 @@ module.exports = {
       board: values.board,
       list: values.list,
     });
+
+    if (sails.helpers.automations && card.boardId) {
+      await sails.helpers.automations.evaluateRules.with({
+        event: 'card_created',
+        card,
+        boardId: card.boardId,
+        context: { user: values.creatorUser, request: inputs.request, list: values.list, board: values.board },
+        depth: inputs.automationDepth || 1,
+      });
+    }
 
     return card;
   },

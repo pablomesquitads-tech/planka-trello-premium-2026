@@ -35,6 +35,10 @@ module.exports = {
     request: {
       type: 'ref',
     },
+    automationDepth: {
+      type: 'number',
+      defaultsTo: 1,
+    },
   },
 
   exits: {
@@ -421,6 +425,31 @@ module.exports = {
 
         // TODO: send webhooks
       }
+    }
+
+    if (sails.helpers.cards.syncMirrors) {
+      await sails.helpers.cards.syncMirrors.with({
+        card,
+        request: inputs.request,
+      });
+    }
+
+    if (sails.helpers.automations && card.boardId) {
+      const event = values.listId && values.listId !== inputs.record.listId ? 'card_moved' : 'card_updated';
+      await sails.helpers.automations.evaluateRules.with({
+        event,
+        card,
+        boardId: card.boardId,
+        context: {
+          user: inputs.actorUser,
+          request: inputs.request,
+          list: inputs.list,
+          board: inputs.board,
+          fromListId: inputs.record.listId,
+          toListId: card.listId,
+        },
+        depth: inputs.automationDepth || 1,
+      });
     }
 
     return card;

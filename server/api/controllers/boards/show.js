@@ -236,6 +236,10 @@ module.exports = {
     const customFields = await CustomField.qm.getByCustomFieldGroupIds(customFieldGroupIds);
     const customFieldValues = await CustomFieldValue.qm.getByCardIds(cardIds);
 
+    const automationRules = await AutomationRule.qm.getByBoardId(board.id);
+    const cardMirrors = await CardMirror.qm.getByTargetBoardId(board.id);
+    const cardDependencies = await CardDependency.qm.getByCardIds(cardIds);
+
     const cardSubscriptions = await CardSubscription.qm.getByCardIdsAndUserId(
       cardIds,
       currentUser.id,
@@ -272,6 +276,9 @@ module.exports = {
         customFieldGroups,
         customFields,
         customFieldValues,
+        automationRules,
+        cardMirrors,
+        cardDependencies,
         users: sails.helpers.users.presentMany(users, currentUser),
         projects: [project],
         attachments: sails.helpers.attachments.presentMany(attachments),
